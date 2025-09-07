@@ -1,0 +1,11 @@
+{
+  "authorize": "Authorize",
+  "authorization": "Authorization",
+  "enter_pin": "Enter PIN",
+  "unlock": "Unlock",
+  "wrong_pin": "Incorrect PIN",
+  "create_id": "Create ID",
+  "import_id": "Add Identifier",
+  "welcome": "Welcome to Secra - Arkonova Network"
+}
+

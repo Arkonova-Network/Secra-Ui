@@ -1,0 +1,11 @@
+{
+  "authorize": "Авторизоваться",
+  "authorization": "Авторизация",
+  "enter_pin": "Введите PIN",
+  "unlock": "Разблокировать",
+  "wrong_pin": "Неверный PIN",
+  "create_id": "Создать идентификатор",
+  "import_id": "Добавить идентификатор",
+  "welcome": "Добро пожаловать в Secra - Arkonova Network"
+}
+
