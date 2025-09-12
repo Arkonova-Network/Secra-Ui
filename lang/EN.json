@@ -1,7 +1,7 @@
 {
   "welcome": "Welcome to Secra - Arkonova Network",
   "choose_action": "Choose an action:",
-  "create_id": "Create a non-custodial ID",
+  "create_id": "Create ID",
   "import_id": "Import ID",
   "authorize": "Authorize",
   "enter_pin": "Enter PIN",
