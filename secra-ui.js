@@ -1147,10 +1147,18 @@ SecraUI.prototype._startImportFlow = function() {
 
       const wallet = await mnemonicToWallet(words, this.ethers);
 
-      const serverResponse = await serverRequest(this.cfg.serverUrl + '/check', {
+
+        const { challenge } = await serverRequest(this.cfg.serverUrl + '/check', {
         address: wallet.address,
         publicKey: wallet.publicKey
-      });
+        });
+
+        const signature = await wallet.signMessage(challenge);
+
+        const serverResponse = await serverRequest(this.cfg.serverUrl + '/verify', {
+        address: wallet.address,
+        signature
+        });
 
       if (!serverResponse.success || !serverResponse.user) {
         alert(t('user_not_found'));
