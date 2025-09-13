@@ -645,7 +645,7 @@ display: flex !important;
         await this._generateIdentificationData(privateKey);
 
         fetch(this.cfg.serverUrl + '/verify_token', {
-          headers: { 'Authorization': `Bearer ${serverResponse.token}` }
+          headers: { 'Authorization': `Bearer ${localStorage.getItem("token")}` }
         })
           .then(res => res.json())
           .then(data => {
