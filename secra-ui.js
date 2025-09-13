@@ -199,11 +199,7 @@ async function mnemonicToWallet(mnemonic, ethers) {
     ? ethers.Wallet.fromPhrase(phrase) // ethers v6
     : ethers.Wallet.fromMnemonic(phrase); // ethers v5
 
-  return {
-    address: wallet.address,
-    privateKey: wallet.privateKey,
-    publicKey: wallet.publicKey
-  };
+  return wallet;
 }
 
 
