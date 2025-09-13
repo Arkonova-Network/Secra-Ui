@@ -1178,7 +1178,6 @@ SecraUI.prototype._startImportFlow = function() {
       }
 
       const userData = serverResponse.user;
-      console.log(userData);
       localStorage.setItem("token", serverResponse.token);
 
       if (userData.address !== wallet.address) {
@@ -1257,11 +1256,11 @@ SecraUI.prototype._startImportFlow = function() {
         sessionStorage.setItem('Secra_private_unencrypted_temp', wallet.privateKey);
         
         // Compute data hash
-        const dataHash = await computeDataHash(userData.avatar, wallet.address, encryptedPrivateKey, pinHash);
+        const dataHash = await computeDataHash(userData.avatar_url, wallet.address, encryptedPrivateKey, pinHash);
         
         // Store in localStorage
-        localStorage.setItem(KEYS.avatar, userData.avatar);
-        localStorage.setItem(KEYS.name, userData.nickname);
+        localStorage.setItem(KEYS.avatar, userData.avatar_url);
+        localStorage.setItem(KEYS.name, userData.display_name);
         localStorage.setItem(KEYS.address, wallet.address);
         localStorage.setItem(KEYS.privEnc, encryptedPrivateKey);
         localStorage.setItem(KEYS.pinHash, pinHash);
@@ -1292,8 +1291,8 @@ SecraUI.prototype._startImportFlow = function() {
     const content = createEl('div', { style: 'text-align: center;' }, [
       createEl('h4', {}, t('welcome_back')),
       createEl('div', { style: 'margin: 20px 0;' }, [
-        createEl('img', { src: userData.avatar, alt: 'avatar', style: 'width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px;' }),
-        createEl('p', {}, userData.nickname)
+        createEl('img', { src: userData.avatar_url, alt: 'avatar', style: 'width: 80px; height: 80px; border-radius: 50%; margin-bottom: 10px;' }),
+        createEl('p', {}, userData.display_name)
       ]),
       forwardBtn
     ]);
