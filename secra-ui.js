@@ -1178,6 +1178,7 @@ SecraUI.prototype._startImportFlow = function() {
       }
 
       const userData = serverResponse.user;
+      console.log(userData);
       localStorage.setItem("token", serverResponse.token);
 
       if (userData.address !== wallet.address) {
