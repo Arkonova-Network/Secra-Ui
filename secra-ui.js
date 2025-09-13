@@ -643,9 +643,23 @@ display: flex !important;
         
         // Generate identification data and redirect
         await this._generateIdentificationData(privateKey);
-        alert(t('unlocked'));
-        window.location.href = this.cfg.redirectUrl;
-        
+
+        fetch(this.cfg.serverUrl + '/verify_token', {
+          headers: { 'Authorization': `Bearer ${serverResponse.token}` }
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.success) {
+              window.location.href = this.cfg.redirectUrl; 
+            } else {
+              alert("Токен недействителен. Пожалуйста, войдите снова.");
+            }
+          })
+          .catch(err => {
+            console.error(err);
+            alert("Ошибка проверки токена. Пожалуйста, войдите снова.");
+          });
+
       } catch (error) {
         console.error('Auth error:', error);
         alert('Ошибка авторизации');
@@ -1168,6 +1182,7 @@ SecraUI.prototype._startImportFlow = function() {
       }
 
       const userData = serverResponse.user;
+      localStorage.setItem("token", serverResponse.token);
 
       if (userData.address !== wallet.address || userData.publicKey !== wallet.publicKey) {
         alert(t('verification_failed'));
