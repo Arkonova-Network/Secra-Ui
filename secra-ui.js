@@ -1180,16 +1180,12 @@ SecraUI.prototype._startImportFlow = function() {
       const userData = serverResponse.user;
       localStorage.setItem("token", serverResponse.token);
 
-      if (userData.address !== wallet.address || userData.publicKey !== wallet.publicKey) {
+      if (userData.address !== wallet.address) {
         alert(t('verification_failed'));
         importBtn.innerHTML = t('import_btn');
         importBtn.disabled = false;
         return;
       }
-
-      await serverRequest(this.cfg.serverUrl + '/confirm', {
-        address: wallet.address
-      });
 
       this._setupImportPin(wallet, userData);
 
