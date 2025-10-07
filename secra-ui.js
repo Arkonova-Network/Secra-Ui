@@ -832,7 +832,7 @@ SecraUI.prototype._verifyMnemonic = function() {
   randomIndices.sort((a, b) => a - b);
 
   const inputs = [];
-  const verificationDiv = createEl('div', {});
+  const verificationDiv = createEl('div', {class: 'VerificationtDiv'});
   
   randomIndices.forEach(index => {
     const label = createEl('label', {}, `${t('enter_word')} ${index + 1}:`);
