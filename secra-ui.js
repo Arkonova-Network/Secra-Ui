@@ -6,7 +6,7 @@ Features added:
  - Saves encrypted private key into IndexedDB (encrypted with AES-GCM derived from PIN)
  - Keeps compatibility with original flows (create/import/auth)
  - Exposes helpers for retrieving encrypted key from IDB
-Version: 1.5.0
+Version: 1.7.0
 */
 
 (function (global) {
